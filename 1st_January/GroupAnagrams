@@ -1,0 +1,30 @@
+// LeetCode 83 
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> result = new ArrayList<>();
+        if(strs.length == 0) {
+            return result;
+        }
+        HashMap<String, List<String>> map = new HashMap<>();
+        
+        for(String current : strs) {
+            char[] charArr = current.toCharArray();
+            Arrays.sort(charArr);
+            
+            // String sorted = new String(charArr);
+            String sorted = String.valueOf(charArr);
+            
+            
+            if(!map.containsKey(sorted)) {
+                map.put(sorted, new ArrayList<>());
+            }
+            // where key = sorted, add the relevant anagrams to the list 
+            map.get(sorted).add(current);
+         }
+        // Iterate through map values which contains all the anagrams list segregated.. 
+        for(List<String> item : map.values()) {
+            result.add(item);
+        }
+        return result;
+    }
+}
