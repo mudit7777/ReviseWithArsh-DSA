@@ -1,0 +1,30 @@
+class Solution {
+    public int countSubArrayProductLessThanK(long a[], long n, long k)
+    {
+        // count banao 
+        long count = 0;
+        long i, j, mul;
+        
+        // loop through the array at first glance - First Traversing 
+        for( i = 0; i < n; i++) {
+            if(a[i] < k) 
+            count ++;
+            
+            // store the value of current element in mul 
+            mul = a[i];
+            
+            for( j = i + 1; j < n; j++) {
+                // calculate and update the val of mul by travelling through array once again 
+                mul = mul * arr[j];
+                // Now check if mul is less than k
+                if(mul < k) 
+                   count++;
+                   else 
+                   break;
+            }
+        }
+        return count;
+        
+    }
+}
+// Time Complexity - O(n2)
